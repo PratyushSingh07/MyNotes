@@ -1,6 +1,7 @@
 package com.playground.mynotes.di
 
 import com.playground.mynotes.feature_note.domain.repository.NoteRepository
+import com.playground.mynotes.feature_note.domain.use_case.AddNoteUseCase
 import com.playground.mynotes.feature_note.domain.use_case.DeleteNoteUseCase
 import com.playground.mynotes.feature_note.domain.use_case.GetAllNotesUseCase
 import com.playground.mynotes.feature_note.domain.use_case.NoteUseCaseWrapper
@@ -19,7 +20,8 @@ object UseCaseModule {
     fun providesNoteUseCaseWrapper(repository: NoteRepository): NoteUseCaseWrapper {
         return NoteUseCaseWrapper(
             getAllNotesUseCase = GetAllNotesUseCase(repository),
-            deleteNoteUseCase = DeleteNoteUseCase(repository)
+            deleteNoteUseCase = DeleteNoteUseCase(repository),
+            addNoteUseCase = AddNoteUseCase(repository)
         )
     }
 }
